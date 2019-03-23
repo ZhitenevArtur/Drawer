@@ -21,8 +21,6 @@ function getClick(e) {
 	paint.push(spot);
 
 	draw();
-	
-	// console.log(isPainting);
 }
 
 function getMove(e) {
@@ -41,7 +39,6 @@ function offBoard() {
 }
 
 function Spot(x, y, dragging) {
-	// console.log(x, y, dragging, color);
 	this.x = x;
 	this.y = y;
 	this.drag = dragging;
