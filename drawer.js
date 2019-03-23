@@ -1,5 +1,8 @@
 var isPainting = false;
 var paint = new Array();
+var curColor = 'black';
+var curSize = '10';
+
 window.onload=function(){
 	canv = document.getElementById('drawBoard');
 	context = canv.getContext('2d');
@@ -7,58 +10,64 @@ window.onload=function(){
 	canv.onmousemove = getMove;
 	canv.onmouseup = offBoard;
 	canv.onmouseleave = offBoard;
+
+	button
 }
 
-function getClick (e) {
+function getClick(e) {
 	mouseX = e.pageX - this.offsetLeft;
 	mouseY = e.pageY - this.offsetTop;	
 	isPainting = true;
 
-	var spot = new Spot(mouseX, mouseY, false, 'red');
+	var spot = new Spot(mouseX, mouseY, false);
 	paint.push(spot);
 
 	draw();
+	
 	console.log(isPainting);
 }
 
-function getMove (e) {
+function getMove(e) {
 	mouseX = e.pageX - this.offsetLeft;
 	mouseY = e.pageY - this.offsetTop;
 	
 	if(isPainting){
-		var spot = new Spot(mouseX, mouseY, true, 'red');
+		var spot = new Spot(mouseX, mouseY, true);
 		paint.push(spot);
 		draw();
 	}
 }
 
-function offBoard () {
+function offBoard() {
 	isPainting = false;
 }
 
-function Spot (x, y, dragging, color) {
+function Spot(x, y, dragging) {
 	// console.log(x, y, dragging, color);
 	this.x = x;
 	this.y = y;
 	this.drag = dragging;
-	this.color = color;
+	this.color = curColor;
+	this.size = curSize;
 }
 
-function draw () {
+function draw() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-	context.strokeStyle = "#df4b26";
-	context.lineJoin = "round";
-	context.lineWidth = 5;
 
 	for (var i = 0; i < paint.length; i++) {
 		context.beginPath();
+		
 		if(paint[i].drag && i){
 			context.moveTo(paint[i-1].x, paint[i-1].y);
-		}
-		else{
+		} else {
 			context.moveTo(paint[i].x-1, paint[i].y);
 		}
 		context.lineTo(paint[i].x,paint[i].y);
+
+		context.strokeStyle = paint[i].color;
+		context.lineWidth = paint[i].size;
+		context.lineJoin = "round";
+
 		context.closePath();
 		context.stroke();
 	}
