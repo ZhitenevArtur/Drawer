@@ -7,11 +7,21 @@
 </head>
 <body>
 	<canvas id="drawBoard" width="1000" height="500"></canvas>
-	<button onclick="curColor = 'black'">black</button>
-	<button onclick="curColor = 'red'">red</button>
-	<button onclick="curColor = 'green'">green</button>
-	<button onclick="curColor = 'yellow'">yellow</button>
-	<button id="clearCanvasSimple" type="button">Clear</button>
+	<div class="colors">
+		<button onclick="curColor = 'black'">black</button>
+		<button onclick="curColor = 'red'">red</button>
+		<button onclick="curColor = 'green'">green</button>
+		<button onclick="curColor = 'yellow'">yellow</button>
+		<button onclick="curColor = 'white'">eraser</button>
+		<button onclick="clearBoard()">Clear</button>
+	</div>
+	<div class="sizes">
+		<button onclick="curSize = 5;">small</button>
+		<button onclick="curSize = 10;">normal</button>
+		<button onclick="curSize = 20;">big</button>
+		<button onclick="curSize = 30;">huge</button>
+	</div>
+	
 </body>
 <script type="text/javascript" src="drawer.js"></script>
 </html>

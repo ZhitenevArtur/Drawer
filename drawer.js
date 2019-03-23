@@ -10,8 +10,6 @@ window.onload=function(){
 	canv.onmousemove = getMove;
 	canv.onmouseup = offBoard;
 	canv.onmouseleave = offBoard;
-
-	button
 }
 
 function getClick(e) {
@@ -24,7 +22,7 @@ function getClick(e) {
 
 	draw();
 	
-	console.log(isPainting);
+	// console.log(isPainting);
 }
 
 function getMove(e) {
@@ -71,4 +69,9 @@ function draw() {
 		context.closePath();
 		context.stroke();
 	}
+}
+
+function clearBoard() {
+	paint.length = 0;
+	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 }
