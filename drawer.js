@@ -29,6 +29,9 @@ function getMove(e) {
 	
 	if(isPainting){
 		var spot = new Spot(mouseX, mouseY, true);
+
+		// paint[paint.length-1].drag = true;
+
 		paint.push(spot);
 		draw();
 	}
@@ -48,24 +51,34 @@ function Spot(x, y, dragging) {
 
 function draw() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+	console.log(paint);
 
-	for (var i = 0; i < paint.length; i++) {
-		context.beginPath();
-		
+	for (var i = 0, length = paint.length; i < length; i++) {
+		context.lineWidth = paint[i].size*2;
+		context.fillStyle = paint[i].color;
+		context.lineCap = 'round';
+
 		if(paint[i].drag && i){
-			context.moveTo(paint[i-1].x, paint[i-1].y);
-		} else {
-			context.moveTo(paint[i].x-1, paint[i].y);
+			if(paint[i-1].drag){
+				context.lineTo(paint[i].x, paint[i].y);
+				context.stroke();
+			}
+
+			context.beginPath();
+			context.arc(paint[i].x, paint[i].y, paint[i].size, 0, 2*Math.PI);
+			// context.rect(paint[i].x, paint[i].y, 5, paint[i].size);
+			context.fill();
+
+			context.beginPath();
+			context.moveTo(paint[i].x, paint[i].y);
+		} else{
+			context.beginPath();
+			context.arc(paint[i].x, paint[i].y, paint[i].size, 0, 2*Math.PI);
+			// context.rect(paint[i].x, paint[i].y, 1, paint[i].size);
+			context.fill();
 		}
-		context.lineTo(paint[i].x,paint[i].y);
-
-		context.strokeStyle = paint[i].color;
-		context.lineWidth = paint[i].size;
-		context.lineJoin = "round";
-
-		context.closePath();
-		context.stroke();
 	}
+
 }
 
 function clearBoard() {
