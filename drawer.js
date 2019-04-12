@@ -5,7 +5,12 @@ var curSize = '10';
 
 window.onload=function(){
 	canv = document.getElementById('drawBoard');
+
 	context = canv.getContext('2d');
+		
+	canv.width  = document.documentElement.clientWidth;
+	canv.height = document.documentElement.clientHeight;
+
 	canv.onmousedown = getClick;
 	canv.onmousemove = getMove;
 	canv.onmouseup = offBoard;
@@ -71,4 +76,14 @@ function draw() {
 function clearBoard() {
 	paint.length = 0;
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+}
+
+function changeSize () {
+	curSize = document.getElementById("size").value;
+}
+
+function changeColor (color) {
+	document.getElementById(curColor).classList.remove("active");
+	curColor = color;
+	document.getElementById(color).classList.add("active");
 }

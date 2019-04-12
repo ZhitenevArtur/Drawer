@@ -6,21 +6,26 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<canvas id="drawBoard" width="1000" height="500"></canvas>
-	<div class="colors">
-		<button onclick="curColor = 'black'">black</button>
-		<button onclick="curColor = 'red'">red</button>
-		<button onclick="curColor = 'green'">green</button>
-		<button onclick="curColor = 'yellow'">yellow</button>
-		<button onclick="curColor = 'white'">eraser</button>
-		<button onclick="clearBoard()">Clear</button>
+	<div class="controls">
+		<div class="colors">
+			<div id="black" class="color-button active" onclick="changeColor('black')"></div>
+			<div id="red" class="color-button" onclick="changeColor('red')"></div>
+			<div id="green" class="color-button" onclick="changeColor('green')"></div>
+			<div id="yellow" class="color-button" onclick="changeColor('yellow')"></div>
+			<div id="purple" class="color-button" onclick="changeColor('purple')"></div>
+			<div id="white" class="color-button" onclick="changeColor('white')"></div>
+		</div>
+		
+		<img src="eraser.svg" alt="eraser" class="icon" onclick="clearBoard()">
+		
+		<div class="sizes">
+			<img src="ruler.svg" alt="ruler" class="icon">
+
+			<input type="range" min="3" max="45" id="size" oninput="changeSize()" value="10" class="size">
+		</div>
+
 	</div>
-	<div class="sizes">
-		<button onclick="curSize = 5;">small</button>
-		<button onclick="curSize = 10;">normal</button>
-		<button onclick="curSize = 20;">big</button>
-		<button onclick="curSize = 30;">huge</button>
-	</div>
+	<canvas id="drawBoard"></canvas>
 	
 </body>
 <script type="text/javascript" src="drawer.js"></script>
