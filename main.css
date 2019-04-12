@@ -6,19 +6,26 @@ body{
 	position: absolute;
 }
 
+
 .controls{
 	background-color: #30302F;
-
-	display: flex;
-	justify-content: center;
 	width: 100vw;
-	height: 9vh;
-
-	align-items: center;
-
 	position: absolute;
 	z-index: 1;
+	/*height: 10vh;*/
 }
+
+.wrapper{
+	width: 50vw;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+	padding: 3vh 0;
+}
+
 .colors{
 	display: flex;
 	margin-right: 45px;
@@ -58,3 +65,15 @@ body{
 	width: 32px;
 }
 
+@media screen and (max-width: 1024px) {
+	.wrapper{
+		width: 100vw;
+	}
+	.color-button{
+		width: 64px;
+		height: 64px;
+	}
+	.icon{
+		width: 64px;
+	}
+}

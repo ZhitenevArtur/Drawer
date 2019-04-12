@@ -7,23 +7,24 @@
 </head>
 <body>
 	<div class="controls">
-		<div class="colors">
-			<div id="black" class="color-button active" onclick="changeColor('black')"></div>
-			<div id="red" class="color-button" onclick="changeColor('red')"></div>
-			<div id="green" class="color-button" onclick="changeColor('green')"></div>
-			<div id="yellow" class="color-button" onclick="changeColor('yellow')"></div>
-			<div id="purple" class="color-button" onclick="changeColor('purple')"></div>
-			<div id="white" class="color-button" onclick="changeColor('white')"></div>
-		</div>
+		<div class="wrapper">
+			<div class="colors">
+				<div id="black" class="color-button active" onclick="changeColor('black')"></div>
+				<div id="red" class="color-button" onclick="changeColor('red')"></div>
+				<div id="green" class="color-button" onclick="changeColor('green')"></div>
+				<div id="yellow" class="color-button" onclick="changeColor('yellow')"></div>
+				<div id="purple" class="color-button" onclick="changeColor('purple')"></div>
+				<div id="white" class="color-button" onclick="changeColor('white')"></div>
+			</div>
+			
+			<img src="eraser.svg" alt="eraser" class="icon" onclick="clearBoard()">
 		
-		<img src="eraser.svg" alt="eraser" class="icon" onclick="clearBoard()">
-		
-		<div class="sizes">
-			<img src="ruler.svg" alt="ruler" class="icon">
+			<div class="sizes">
+				<img src="ruler.svg" alt="ruler" class="icon">
 
-			<input type="range" min="3" max="45" id="size" oninput="changeSize()" value="10" class="size">
+				<input type="range" min="3" max="45" id="size" oninput="changeSize()" value="10" class="size">
+			</div>
 		</div>
-
 	</div>
 	<canvas id="drawBoard"></canvas>
 	
